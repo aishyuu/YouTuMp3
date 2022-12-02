@@ -19,6 +19,8 @@ __Libraries Used__
 
 ## How to use YouTuMp3
 
+*Disclaimer: There must be a file named "Results_Here" in the same directory at all times or the program won't work*
+
 ### Non-GUI
 Once downloaded, run one of the following commands on your terminal
 
