@@ -1,5 +1,6 @@
 from pytube import YouTube
 from pytube import Search
+from pytube import Playlist
 
 def download_song(link):
     """
@@ -16,6 +17,21 @@ def download_song(link):
     stream.download()
     print("Finished")
 
+def download_playlist(link):
+    """
+    Parse through all songs in playlist and download them
+
+    :param link: link to youtube playlist
+    :type link: str
+    :return: Nothing (Videos are downloaded using the download_song function)
+    :rtype: None
+    """
+
+    p = Playlist(link)
+    for song in p.video_urls:
+        download_song(song)
+
+
 def link_search(term):
     """
     Search user term on Youtube and return a YouTube link
@@ -26,3 +42,4 @@ def link_search(term):
     :rtype: str
     """
     return f'https://youtu.be/{Search(term).results[0].video_id}'
+

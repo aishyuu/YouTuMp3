@@ -14,7 +14,7 @@ args = parser.parse_args()
 def main():
     if len(sys.argv) > 1:
         #If the input does not start with 
-        if not re.search(r"https?://(www\.)?youtube.com/", args.s) and not re.search(r"https?://youtu\.be/", sys.argv[2]):
+        if not re.search(r"https?://(www\.)?youtube.com/", sys.argv[2]) and not re.search(r"https?://youtu\.be/", sys.argv[2]):
             #Search for the term on YouTube and grab the first results video id
             search = f'https://youtu.be/{Search(sys.argv[2]).results[0].video_id}'
         else:
@@ -29,6 +29,10 @@ def main():
 
         if args.s:
             downloads.download_song(search)
+            sys.exit()
+
+        if args.p:
+            downloads.download_playlist(search)
             sys.exit()
 
     print("Please insert an option. Type -h for help")
