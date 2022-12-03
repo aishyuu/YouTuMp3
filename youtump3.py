@@ -21,7 +21,7 @@ def main():
             search = sys.argv[2]
 
         #Create new directory in "Results_Here" and set current directory to that
-        date_string = str(datetime.now().strftime("%d_%m_%Y_%H_%M_%S"))
+        date_string = str(datetime.now().strftime("%d_%m_%Y %H_%M_%S"))
         result_dir = os.getcwd()
         path = os.path.join(result_dir, "Results_Here" ,date_string)
         os.mkdir(path)
