@@ -17,11 +17,11 @@ def main():
         filtering.create_and_set_dir()
 
         if args.s:
-            downloads.download_song(search)
+            downloads.download_song(search, False)
             sys.exit()
 
         if args.p:
-            downloads.download_playlist(search)
+            downloads.download_playlist(search, False)
             sys.exit()
 
     print("Please insert an option. Type -h for help")

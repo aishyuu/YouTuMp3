@@ -1,13 +1,14 @@
 from pytube import YouTube
-from pytube import Search
 from pytube import Playlist
 
-def download_song(link):
+def download_song(link, gui):
     """
     Download Youtube Link to audio and save onto output folder
 
     :param link: link to youtube video
     :type link: str
+    :param gui: If the current program is a gui or not
+    :type gui: bool
     :return: Nothing (Video downloads and is put in its own folder)
     :rtype: None
     """
@@ -17,7 +18,7 @@ def download_song(link):
     stream.download()
     print("Finished")
 
-def download_playlist(link):
+def download_playlist(link, gui):
     """
     Parse through all songs in playlist and download them
 
@@ -28,18 +29,11 @@ def download_playlist(link):
     """
 
     p = Playlist(link)
-    for song in p.video_urls:
-        download_song(song)
+    if gui == True:
+        for song in p.video_urls:
+            download_song(song, True)
 
-
-def link_search(term):
-    """
-    Search user term on Youtube and return a YouTube link
-
-    :param term: user search
-    :type term: str
-    :return: Link to Youtube video
-    :rtype: str
-    """
-    return f'https://youtu.be/{Search(term).results[0].video_id}'
+    else:
+        for song in p.video_urls:
+            download_song(song, False)
 
